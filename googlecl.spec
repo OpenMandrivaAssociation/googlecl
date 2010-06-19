@@ -9,6 +9,7 @@ Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Source: http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
 
+Requires: python
 Requires: python-gdata
 
 %description
@@ -34,6 +35,8 @@ python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 PYTHONDONTWRITEBYTECODE= python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+mkdir -p %{buildroot}%{_mandir}/man1
+install -m0644 man/google.1 %{buildroot}%{_mandir}/man1
 
 %clean
 rm -rf %{buildroot}
@@ -41,3 +44,4 @@ rm -rf %{buildroot}
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
 %doc README.txt README.config INSTALL.txt 
+%{_mandir}/man1/google.1*
