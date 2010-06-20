@@ -9,6 +9,7 @@ Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Source: http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
 
+BuildRequires: python
 Requires: python
 Requires: python-gdata
 
