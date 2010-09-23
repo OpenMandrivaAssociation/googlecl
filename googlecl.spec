@@ -1,5 +1,5 @@
 Name:    googlecl
-Version: 0.9.5
+Version: 0.9.10
 Release: %mkrel 1
 Summary: GoogleCL brings Google services to the command line
 License: Apache License 2.0
