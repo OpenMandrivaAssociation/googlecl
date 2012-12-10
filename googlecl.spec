@@ -46,3 +46,24 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README.txt README.config INSTALL.txt 
 %{_mandir}/man1/google.1*
+
+
+%changelog
+* Tue Nov 23 2010 Eugeni Dodonov <eugeni@mandriva.com> 0.9.11-1mdv2011.0
++ Revision: 600268
+- Updated to 0.9.11.
+
+* Fri Nov 12 2010 Bogdano Arendartchuk <bogdano@mandriva.com> 0.9.10-2mdv2011.0
++ Revision: 596947
+- rebuild for python 2.7
+
+* Thu Sep 23 2010 Funda Wang <fwang@mandriva.org> 0.9.10-1mdv2011.0
++ Revision: 580755
+- update to new version 0.9.10
+
+* Sun Jun 20 2010 Eugeni Dodonov <eugeni@mandriva.com> 0.9.5-1mdv2010.1
++ Revision: 548345
+- Added manpage and deps
+- Imported googlecl.
+- Created package structure for googlecl.
+
