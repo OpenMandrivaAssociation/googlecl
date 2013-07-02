@@ -1,11 +1,10 @@
 Name:    googlecl
 Version: 0.9.11
-Release: %mkrel 1
+Release: 2
 Summary: Brings Google services to the command line
 License: Apache License 2.0
 URL:     http://code.google.com/p/googlecl/
 Group:   Networking/Other
-Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Source: http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
 
@@ -34,16 +33,13 @@ make Google Data API calls from the command line.
 python setup.py build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-PYTHONDONTWRITEBYTECODE= python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+PYTHONDONTWRITEBYTECODE= python setup.py install --root=%{buildroot} --record=INSTALLED_FILES
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m0644 man/google.1 %{buildroot}%{_mandir}/man1
 
 %clean
-rm -rf %{buildroot}
 
 %files -f INSTALLED_FILES
-%defattr(-,root,root)
 %doc README.txt README.config INSTALL.txt 
 %{_mandir}/man1/google.1*
 
