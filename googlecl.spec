@@ -1,3 +1,5 @@
+%define debug_package %{nil}
+
 Name:    googlecl
 Version: 0.9.11
 Release: 2
