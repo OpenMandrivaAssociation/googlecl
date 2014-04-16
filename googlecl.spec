@@ -1,32 +1,37 @@
-%define debug_package %{nil}
-
-Name:    googlecl
-Version: 0.9.11
-Release: 2
-Summary: Brings Google services to the command line
-License: Apache License 2.0
-URL:     http://code.google.com/p/googlecl/
-Group:   Networking/Other
-
-Source: http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
-
-BuildRequires: python python-devel
-Requires: python
-Requires: python-gdata
+Summary:	This tool brings Google services to the command line
+Name:		googlecl
+Version:	0.9.14
+Release:	1
+License:	ASL 2.0
+Group:		Networking/Other
+Url:		http://code.google.com/p/googlecl/
+Source0:	http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
+BuildRequires:	pkgconfig(python)
+Requires:	python-gdata
+BuildArch:	noarch
 
 %description
-
 GoogleCL is a command-line utility that provides access to various Google
 services. It streamlines tasks such as posting to a Blogger blog, adding events
 to Calendar, or editing documents on Google Docs.
 
 For example:
-$ google blogger post --blog "My blog" --tags "python, googlecl" my_post.html 
+$ google blogger post --blog "My blog" --tags "python, googlecl" my_post.html
 $ google calendar add "Lunch with Jason tomorrow at noon"
 $ google docs edit --title "Shopping list" --editor vim
 
 GoogleCL is a pure Python application that uses the Python gdata libraries to
 make Google Data API calls from the command line.
+
+%files
+%doc README.txt README.config INSTALL.txt 
+%{_mandir}/man1/google.1*
+%{_bindir}/google
+%{python_sitelib}/%{name}-*.egg-info
+%{python_sitelib}/%{name}/*.py*
+%{python_sitelib}/%{name}/*/*.py*
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -35,33 +40,7 @@ make Google Data API calls from the command line.
 python setup.py build
 
 %install
-PYTHONDONTWRITEBYTECODE= python setup.py install --root=%{buildroot} --record=INSTALLED_FILES
+python setup.py install --root=%{buildroot} --skip-build
 mkdir -p %{buildroot}%{_mandir}/man1
-install -m0644 man/google.1 %{buildroot}%{_mandir}/man1
-
-%clean
-
-%files -f INSTALLED_FILES
-%doc README.txt README.config INSTALL.txt 
-%{_mandir}/man1/google.1*
-
-
-%changelog
-* Tue Nov 23 2010 Eugeni Dodonov <eugeni@mandriva.com> 0.9.11-1mdv2011.0
-+ Revision: 600268
-- Updated to 0.9.11.
-
-* Fri Nov 12 2010 Bogdano Arendartchuk <bogdano@mandriva.com> 0.9.10-2mdv2011.0
-+ Revision: 596947
-- rebuild for python 2.7
-
-* Thu Sep 23 2010 Funda Wang <fwang@mandriva.org> 0.9.10-1mdv2011.0
-+ Revision: 580755
-- update to new version 0.9.10
-
-* Sun Jun 20 2010 Eugeni Dodonov <eugeni@mandriva.com> 0.9.5-1mdv2010.1
-+ Revision: 548345
-- Added manpage and deps
-- Imported googlecl.
-- Created package structure for googlecl.
+cp -a man/google.1 %{buildroot}%{_mandir}/man1
 
