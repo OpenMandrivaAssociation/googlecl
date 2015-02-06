@@ -1,7 +1,7 @@
 Summary:	This tool brings Google services to the command line
 Name:		googlecl
 Version:	0.9.14
-Release:	1
+Release:	2
 License:	ASL 2.0
 Group:		Networking/Other
 Url:		http://code.google.com/p/googlecl/
