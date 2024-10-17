@@ -4,7 +4,7 @@ Version:	0.9.14
 Release:	2
 License:	ASL 2.0
 Group:		Networking/Other
-Url:		http://code.google.com/p/googlecl/
+Url:		https://code.google.com/p/googlecl/
 Source0:	http://googlecl.googlecode.com/files/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(python)
 Requires:	python-gdata
